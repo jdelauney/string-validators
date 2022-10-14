@@ -156,14 +156,14 @@ const isValidEmailIncludeDomainBlackList = isValidEmail('johndoe@dodgeit.com', '
    describe('Feature : Strong password validator', () => {
      describe('Given a list of valid password', () => {
        test.each(validPasswords)('When %p as argument, it should return TRUE', async password => {
-         const isValid = await isValidEmail(email, '../files/email_disposable.csv');
+         const isValid = await isValidStrongPassword(password);
          expect(isValid).toBe(true);
        });
      });
 
      describe('Given a list of invalid password', () => {
        test.each(invalidPasswords)('When %p as argument, it should return FALSE', async password => {
-         const isValid = await isValidEmail(email, '../files/email_disposable.csv');
+         const isValid = await isValidStrongPassword(password);
          expect(isValid).toBe(false);
        });
      });
@@ -185,15 +185,16 @@ import {
   CHARSET_UPPER_ALPHA
 } from "string-validators";
 
-const isValidStrongPassword = stringValidator('abC$123DEf', [
-  isNot(isEmpty),
-  isMinLength(8),
-  isContainsOneOfCharsMinCount('$#%+*-=[]/(){}€£!?_', 1),
-  isContainsOneOfCharsMinCount(CHARSET_LOWER_ALPHA, 3),
-  isContainsOneOfCharsMinCount(CHARSET_UPPER_ALPHA, 2),
-  isContainsOneOfCharsMinCount(CHARSET_NUMBER, 2),
-]);
-// return true
+const isValidStrongPassword = (password: string) => {
+  return stringValidator(password, [
+    isNot(isEmpty),
+    isMinLength(8),
+    isContainsOneOfCharsMinCount('$#%+*-=[]/(){}€£!?_', 1),
+    isContainsOneOfCharsMinCount(CHARSET_LOWER_ALPHA, 3),
+    isContainsOneOfCharsMinCount(CHARSET_UPPER_ALPHA, 2),
+    isContainsOneOfCharsMinCount(CHARSET_NUMBER, 2),
+  ]);
+}
 
 const isValidStrongPassword2 = stringValidator('abC$123Def', [
   isNot(isEmpty),
