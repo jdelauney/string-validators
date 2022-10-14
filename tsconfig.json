@@ -1,0 +1,48 @@
+{
+  "compilerOptions": {
+    "useDefineForClassFields": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "noEmit": true,
+    "allowJs": true,
+    "alwaysStrict": true,
+    "baseUrl": "./",
+    "rootDir": "./src",
+    "outDir": "./dist",
+    "checkJs": true,
+    "declaration": true,
+    "declarationMap": true,
+    // This compiler run should
+    // only output d.ts files
+    //"emitDeclarationOnly": true,
+    "forceConsistentCasingInFileNames": true,
+    "lib": [
+      "ESNext"
+    ],
+    "strict": true,
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "skipLibCheck": true,
+    "sourceMap": true,
+
+    "types": [
+      "node",
+      "vitest/globals",
+    ]
+  },
+  "include": [
+    "src/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "src/__tests__/**/*.ts",
+    "files/**/*.*"
+  ]
+}

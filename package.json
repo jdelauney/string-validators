@@ -1,0 +1,81 @@
+{
+  "name": "string-validators",
+  "version": "1.0.0",
+  "description": "Little Javascript / Typescript library for validating format of string like email, url, password...",
+  "main": "dist/string-validators.js",
+  "module": "dist/string-validators.mjs",
+  "typings": "dist/types/index.d.ts",
+  "scripts": {
+    "build": "rollup -c",
+    "build:types": "npx -p typescript tsc src/index.ts --target esNext --declaration --allowJs --emitDeclarationOnly --allowSyntheticDefaultImports true --outDir dist/types",
+    "test": "vitest",
+    "test:watch": "set NODE_ENV=test && vitest --watch",
+    "test:coverage": "vitest --coverage",
+    "lint": "eslint src --fix",
+    "format": "prettier --write",
+    "prepare": "husky install"
+  },
+  "pre-commit": "lint-staged",
+  "keywords": [
+    "typescipt",
+    "vitest",
+    "string",
+    "validator",
+    "email",
+    "nodejs"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jdelauney/string-validators.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jdelauney/string-validators.git/issues"
+  },
+  "homepage": "https://github.com/jdelauney/string-validators.git#readme",
+  "author": "J.Delauney",
+  "license": "MIT",
+  "devDependencies": {
+    "@commitlint/cli": "^17.1.2",
+    "@commitlint/config-conventional": "^17.1.0",
+    "@types/eslint": "^8.4.6",
+    "@types/node": "^18.8.5",
+    "@typescript-eslint/eslint-plugin": "^5.38.0",
+    "@typescript-eslint/parser": "^5.38.0",
+    "@vitest/coverage-c8": "^0.23.4",
+    "esbuild": "^0.15.10",
+    "eslint": "^8.23.1",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-n": "^15.3.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-promise": "^6.0.1",
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.3",
+    "prettier": "^2.7.1",
+    "rollup": "^3.1.0",
+    "rollup-plugin-dts": "^4.2.3",
+    "rollup-plugin-esbuild": "^4.10.1",
+    "typescript": "^4.8.3",
+    "vitest": "^0.23.4"
+  },
+  "peerDependencies": {
+    "@commitlint/cli": "^17.1.2",
+    "@commitlint/config-conventional": "^17.1.0",
+    "@types/eslint": "^8.4.6",
+    "@typescript-eslint/eslint-plugin": "^5.38.0",
+    "@typescript-eslint/parser": "^5.38.0",
+    "@vitest/coverage-c8": "^0.23.4",
+    "eslint": "^8.23.1",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-n": "^15.3.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-promise": "^6.0.1",
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.3",
+    "prettier": "^2.7.1",
+    "vitest": "^0.23.4"
+  }
+}
