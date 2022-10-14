@@ -1,61 +1,63 @@
 import { describe, expect, test } from 'vitest';
 import { stringValidator } from '../stringValidator';
-import { isMinLength } from '../validators/string.validator.isMinLength';
-import { isEmpty } from '../validators/string.validator.isEmpty';
-import { isMaxLength } from '../validators/string.validator.isMaxLength';
-import { isRangeLength } from '../validators/string.validator.isRangeLength';
-import { isUpper } from '../validators/string.validator.isUpper';
-import { isLower } from '../validators/string.validator.isLower';
-import { isAlpha } from '../validators/string.validator.isAlpha';
-import { isAlphaNumeric } from '../validators/string.validator.isAlphaNumeric';
-import { isNumeric } from '../validators/string.validator.isNumeric';
-import { isContainsOneOfChars } from '../validators/string.validator.isContainsOneOfChars';
-import { isContainsSpecialChars } from '../validators/string.validator.isContainsSpecialChars';
-import { isContains } from '../validators/string.validator.isContains';
-import { isContainsAt } from '../validators/string.validator.isContainsAt';
-import { isLengthEqual } from '../validators/string.validator.isLengthEqual';
-import { isEqual } from '../validators/string.validator.isEqual';
-import { isStartsWith } from '../validators/string.validator.isStartsWith';
-import { isEndsWith } from '../validators/string.validator.isEndsWith';
-import { isStartsWithOneOfChars } from '../validators/string.validator.isStartsWithOneOfChars';
-import { isStartsWithOneOf } from '../validators/string.validator.isStartsWithOneOf';
-import { isEndsWithOneOf } from '../validators/string.validator.isEndsWithOneOf';
-import { isEndsWithOneOfChars } from '../validators/string.validator.isEndsWithOneOfChars';
-import { isStartsWithLowerCase } from '../validators/string.validator.isStartsWithLowerCase';
-import { isStartsWithUpperCase } from '../validators/string.validator.isStartsWithUpperCase';
-import { isStartsWithSpecialChar } from '../validators/string.validator.isStartsWithSpecialChar';
-import { isStartsWithNumber } from '../validators/string.validator.isStartsWithNumber';
-import { isEndsWithNumber } from '../validators/string.validator.isEndsWithNumber';
-import { isEndsWithSpecialChar } from '../validators/string.validator.isEndsWithSpecialChar';
-import { isEndsWithUpperCase } from '../validators/string.validator.isEndsWithUpperCase';
-import { isEndsWithLowerCase } from '../validators/string.validator.isEndsWithLowerCase';
-import { isLeftOf } from '../validators/string.validator.isLeftOf';
-import { isLeftOfOneOf } from '../validators/string.validator.isLeftOfOneOf';
-import { isLeftOfOneOfChars } from '../validators/string.validator.isLeftOfOneOfChars';
-import { isRightOf } from '../validators/string.validator.isRightOf';
-import { isRightOfOneOf } from '../validators/string.validator.isRightOfOneOf';
-import { isRightOfOneOfChars } from '../validators/string.validator.isRightOfOneOfChars';
-import { isSurroundBy } from '../validators/string.validator.isSurroundBy';
-import { isSurroundByOneOf } from '../validators/string.validator.isSurroundByOneOf';
-import { isSurroundByOneOfChars } from '../validators/string.validator.isSurroundByOneOfChars';
-import { isSurroundByOneOfPairs } from '../validators/string.validator.isSurroundByOneOfPairs';
-import { isNot } from '../validators/string.validator.isNot';
-import { isContainsCount } from '../validators/string.validator.isContainsCount';
-import { isContainsMaxCount } from '../validators/string.validator.isContainsMaxCount';
-import { isContainsRangeCount } from '../validators/string.validator.isContainsRangeCount';
-import { isContainsMinCount } from '../validators/string.validator.isContainsMinCount';
-import { isContainsOneOfCount } from '../validators/string.validator.isContainsOneOfCount';
-import { isContainsOneOfMinCount } from '../validators/string.validator.isContainsOneOfMinCount';
-import { isContainsOneOfMaxCount } from '../validators/string.validator.isContainsOneOfMaxCount';
-import { isContainsOneOfRangeCount } from '../validators/string.validator.isContainsOneOfRangeCount';
-import { isContainsOneOfCharsCount } from '../validators/string.validator.isContainsOneOfCharsCount';
-import { isContainsOneOfCharsMinCount } from '../validators/string.validator.isContainsOneOfCharsMinCount';
-import { isContainsOneOfCharsMaxCount } from '../validators/string.validator.isContainsOneOfCharsMaxCount';
-import { isContainsOneOfCharsRangeCount } from '../validators/string.validator.isContainsOneOfCharsRangeCount';
-import { isMatch } from '../validators/string.validator.isMatch';
-import { isOneOfCharsFollowByOneOfChars } from '../validators/string.validator.isOneOfCharsFollowByOneOfChars';
-import { isFollowByOneOf } from '../validators/string.validator.isFollowByOneOf';
-import { isFollowBy } from '../validators/string.validator.isFollowBy';
+import {
+  isMinLength,
+  isEmpty,
+  isMaxLength,
+  isRangeLength,
+  isUpper,
+  isLower,
+  isAlpha,
+  isAlphaNumeric,
+  isNumeric,
+  isContainsOneOfChars,
+  isContainsSpecialChars,
+  isContains,
+  isContainsAt,
+  isLengthEqual,
+  isEqual,
+  isStartsWith,
+  isEndsWith,
+  isStartsWithOneOf,
+  isStartsWithOneOfChars,
+  isStartsWithNumber,
+  isStartsWithSpecialChar,
+  isStartsWithLowerCase,
+  isStartsWithUpperCase,
+  isSurroundByOneOf,
+  isSurroundBy,
+  isSurroundByOneOfChars,
+  isSurroundByOneOfPairs,
+  isEndsWithSpecialChar,
+  isMatch,
+  isNot,
+  isOneOfCharsFollowByOneOfChars,
+  isContainsOneOfCharsCount,
+  isContainsMaxCount,
+  isEndsWithOneOf,
+  isContainsOneOfCharsMaxCount,
+  isEndsWithOneOfChars,
+  isContainsCount,
+  isContainsMinCount,
+  isContainsOneOfCharsMinCount,
+  isContainsOneOfCharsRangeCount,
+  isContainsOneOfCount,
+  isContainsOneOfMaxCount,
+  isContainsOneOfMinCount,
+  isContainsOneOfRangeCount,
+  isContainsRangeCount,
+  isEndsWithLowerCase,
+  isEndsWithNumber,
+  isEndsWithUpperCase,
+  isFollowBy,
+  isFollowByOneOf,
+  isLeftOf,
+  isLeftOfOneOf,
+  isLeftOfOneOfChars,
+  isRightOfOneOfChars,
+  isRightOf,
+  isRightOfOneOf,
+} from '../validators';
 
 describe('FEAT: Validate a string with customs validation methods', () => {
   describe('GIVEN a string', () => {
