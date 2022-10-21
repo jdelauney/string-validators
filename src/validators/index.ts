@@ -58,3 +58,4 @@ export { followBy } from './string.validator.followBy';
 export { or } from './string.validator.or';
 export { oneOfFollowBy } from './string.validator.oneOfFollowBy';
 export { followByOneOfChars } from './string.validator.followByOneOfChars';
+export { containsOnlyOneOfChars } from './string.validator.containsOnlyOneOfChars';

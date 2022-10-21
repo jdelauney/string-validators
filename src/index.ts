@@ -14,4 +14,4 @@ export {
   CHARSET_ALL,
 } from './validator';
 
-export * from './validators';
+export * from './validators/index';
