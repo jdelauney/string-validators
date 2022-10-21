@@ -6,7 +6,7 @@ const create = (startsWithStrs: string[], endsWithStrs: string[]): ValidatorFunc
   return Object.freeze({
     validate: (value: string) => {
       let result = false;
-      if (startsWith.length !== endsWith.length) {
+      if (startsWithStrs.length !== endsWithStrs.length) {
         throw new Error('Arrays startsWith and EndsWith not have same length !');
       }
       for (const [index, str] of startsWithStrs.entries()) {
