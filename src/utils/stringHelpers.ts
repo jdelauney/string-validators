@@ -21,3 +21,22 @@ export const strRemoveLineBreaks = (value: string): string => {
 export const strReplaceAccentChars = (value: string): string => {
   return value.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
 };
+
+export const strRemoveDoubleSpaces = (value: string): string => {
+  return value
+    .trim()
+    .split(/\s|\r?\n|\r|\n/g)
+    .join(' ');
+};
+
+export const strExtractLines = (value: string): string[] => {
+  return value.trim().split(/\r?\n|\r|\n/g);
+};
+
+export const strRemoveLastChar = (value: string): string => {
+  return value.slice(0, value.length - 1);
+};
+
+export const strRemoveCharAt = (value: string, pos: number): string => {
+  return value.slice(0, pos) + value.slice(pos + 1, value.length);
+};
