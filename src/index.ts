@@ -1,5 +1,5 @@
 export {
-  stringValidator,
+  validator,
   CHARSET_NUMBER,
   CHARSET_ACCENTED,
   CHARSET_CRLF,
@@ -12,7 +12,7 @@ export {
   CHARSET_UPPER_ALPHA,
   CHARSET_DECIMAL,
   CHARSET_ALL,
-} from './stringValidator';
+} from './validator';
 
 export * from './validators';
 
