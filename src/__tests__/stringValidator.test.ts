@@ -1360,7 +1360,7 @@ describe('FEAT: Validate a string with customs validation methods', () => {
           const isValidFn = () => {
             return validator('**ABcde_', [surroundByOneOfPairs(['**', '__'], ['**', '__', '--'])]);
           };
-          expect(isValidFn).toThrow('Arrays startsWith and EndsWith not have same length !');
+          expect(isValidFn).toThrowError('Arrays startsWith and EndsWith not have same length !');
         });
       });
       describe('WHEN string = _ABcde_ AND surroundBy = **,__; **,__', () => {

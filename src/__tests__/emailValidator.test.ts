@@ -1,5 +1,5 @@
 import { describe, expect, test } from 'vitest';
-import { isValidEmail } from '../emailValidator';
+import { isValidEmail } from './mocks/emailValidator';
 
 const validEmails = [
   'johndoe@mail.com',
@@ -17,6 +17,7 @@ const validEmails = [
   'test@sub.sub.test.co.uk',
   'test@sub.test.domain.com',
   'com@abc.co',
+  'test+sub-adressing@test.domain.com',
 ];
 
 const invalidEmails = [
@@ -45,7 +46,6 @@ const invalidEmails = [
   'test@test.domain',
   'test@io',
   'test@@test.domain',
-  'firstname+lastname@example.com',
   'email@[123.123.123.123]',
   '_______@example.com',
   '"email"@example.com',
@@ -77,14 +77,14 @@ const invalidEmails = [
 describe('Feature : Email validator', () => {
   describe('Given a list of valid emails', () => {
     test.each(validEmails)('When %p as argument, it should return TRUE', async email => {
-      const isValid = await isValidEmail(email, '../files/email_disposable.csv');
+      const isValid = await isValidEmail(email, 'email_disposable.csv');
       expect(isValid).toBe(true);
     });
   });
 
   describe('Given a list of invalid emails', () => {
     test.each(invalidEmails)('When %p as argument, it should return FALSE', async email => {
-      const isValid = await isValidEmail(email, '../files/email_disposable.csv');
+      const isValid = await isValidEmail(email, 'email_disposable.csv');
       expect(isValid).toBe(false);
     });
   });
