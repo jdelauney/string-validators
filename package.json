@@ -2,6 +2,7 @@
   "name": "string-validators",
   "version": "2.0.0",
   "description": "Little Javascript / Typescript library for validating format of string like email, url, password...",
+  "type": "module",
   "main": "dist/string-validators.js",
   "module": "dist/string-validators.mjs",
   "typings": "dist/types/index.d.ts",
