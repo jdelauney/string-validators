@@ -15,5 +15,3 @@ export {
 } from './validator';
 
 export * from './validators';
-
-export { isValidEmail } from './__tests__/mocks/emailValidator';
