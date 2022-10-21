@@ -62,8 +62,7 @@
     </li>
     <li>
       <a href="#usage">Usage</a>
-      <ul>
-        <li><a href="#How-to-check-if-an-email-is-valid">How to check if an email is valid</a></li>
+      <ul> 
         <li><a href="#How-to-make-your-on-custom-string-format-validation-schema">How to make your on custom string format validation schema</a></li>
       </ul>
     </li>
@@ -114,19 +113,6 @@ Or clone this repository
 <!-- Usage -->
 ## Usage
 
-### How to check if an email is valid
-```typescript
-import {isValidEmail} from "string-validators";
-
-const isValidEmail = isValidEmail('johndoe@mail.com');
-// return true
-
-const isValidEmailIncludeDomainBlackList = isValidEmail('johndoe@dodgeit.com', 'pathto/blacklist-domain.csv');
-// return false
-```
-
-> You'll can find a file with a non-exhaustive email disposable domain list, in the folder `files`
-
 ### How to make your on custom string format validation schema
 
 1. Create test
@@ -137,7 +123,7 @@ const isValidEmailIncludeDomainBlackList = isValidEmail('johndoe@dodgeit.com', '
    - in the `__tests__` folder create your unit test
    ```typescript
    import { describe, expect, test } from 'vitest';
-   import { stringValidator } from 'string-validators';
+   import { validator } from 'string-validators';
 
    const validPasswords = [
      'abC$123DEf',
@@ -177,32 +163,32 @@ const isValidEmailIncludeDomainBlackList = isValidEmail('johndoe@dodgeit.com', '
 3. Write your code and refactor it until all tests are green
 ```typescript
 import {
-  stringValidator, 
-  isMinLength, 
-  isContainsOneOfCharsCount, 
+  validator, 
+  minLength, 
+  containsOneOfCharsCount, 
   CHARSET_LOWER_ALPHA, 
   CHARSET_NUMBER, 
   CHARSET_UPPER_ALPHA
 } from "string-validators";
 
 const isValidStrongPassword = (password: string) => {
-  return stringValidator(password, [
-    isNot(isEmpty),
-    isMinLength(8),
-    isContainsOneOfCharsMinCount('$#%+*-=[]/(){}€£!?_', 1),
-    isContainsOneOfCharsMinCount(CHARSET_LOWER_ALPHA, 3),
-    isContainsOneOfCharsMinCount(CHARSET_UPPER_ALPHA, 2),
-    isContainsOneOfCharsMinCount(CHARSET_NUMBER, 2),
+  return validator(password, [
+    not(isEmpty),
+    minLength(8),
+    containsOneOfCharsMinCount('$#%+*-=[]/(){}€£!?_', 1),
+    containsOneOfCharsMinCount(CHARSET_LOWER_ALPHA, 3),
+    containsOneOfCharsMinCount(CHARSET_UPPER_ALPHA, 2),
+    containsOneOfCharsMinCount(CHARSET_NUMBER, 2),
   ]);
 }
 
-const isValidStrongPassword2 = stringValidator('abC$123Def', [
-  isNot(isEmpty),
-  isMinLength(10),
-  isContainsOneOfCharsMinCount('$#%+*-=[]/(){}€£!?_', 2),
-  isContainsOneOfCharsMinCount(CHARSET_LOWER_ALPHA, 3),
-  isContainsOneOfCharsMinCount(CHARSET_UPPER_ALPHA, 2),
-  isContainsOneOfCharsMinCount(CHARSET_NUMBER, 3),
+const isValidStrongPassword2 = validator('abC$123Def', [
+  not(isEmpty),
+  minLength(10),
+  containsOneOfCharsMinCount('$#%+*-=[]/(){}€£!?_', 2),
+  containsOneOfCharsMinCount(CHARSET_LOWER_ALPHA, 3),
+  containsOneOfCharsMinCount(CHARSET_UPPER_ALPHA, 2),
+  containsOneOfCharsMinCount(CHARSET_NUMBER, 3),
 ]);
 // return false
 ```
@@ -214,21 +200,69 @@ const isValidStrongPassword2 = stringValidator('abC$123Def', [
 To help us as much as possible to create validation schemas. 
 The 'String-Validators' library contains more than 50 validation rules that one can apply. 
 
-**Here are a few available functions** :
+**Here are the full list of available validators** :
 * **isEmpty()** : check if string is empty
-* **isMinLength(min)** : check if string has a minimum number of characters
-* **isMinLength(max)** : check if string has a maximum number of characters
-* **isEqualLength(equal)** : check if string has the exact required number of characters
+* **isEqual(equalStr)**
+
+* **minLength(min)** : check if string has a minimum number of characters
+* **minLength(max)** : check if string has a maximum number of characters
+* **rangeLength(min, max)**
+* **isLengthEqual(equal)** : check if string has the exact required number of characters
 * **isUpper()** : check if string is in upper case only
 * **isLower()** : check if string is in lower case only
 * **isAlpha()** : check if string only contain Alpha characters
+* **isAlphaNumeric()** : check if string only contain Alpha numerics characters
 * **isNumber()** : check if string only contain Number characters
-* **isStartsWith(startStr)** : check if string starts with
-* **isEndsWith(startStr)** : check if string ends with
-* **isMatch(regex)** : check if string match with a regex
-* **isSurroundBy(leftStr, rightStr)** : check if string is surrounded by leftStr and rightStr 
-* **isLeftOf(searStr, leftStr)** : check if the first occurrence of searchStr have leftStr on his left
-* **isNot(fn)** : Negate the result of an validator
+* **startsWith(startStr)** : check if string starts with
+* **startsWithOneOf(string[])**
+* **startsWithOneOfChars(chars)**
+* **startsWithSpecialChars()**
+* **startsWithNumber()**
+* **startsWithUpperCase()**
+* **startsWithLowerCase()**
+* **endsWith(startStr)** : check if string ends with
+* **endsWithOneOf(string[])**
+* **endsWithOneOfChars(chars)**
+* **endsWithSpecialChars()**
+* **endsWithNumber()**
+* **endsWithUpperCase()**
+* **endsWithLowerCase()**
+* **contains(subStr)**
+* **containsAt(subStr, pos)**
+* **containsCount(subStr, count)**
+* **containsMinCount(subStr, minCount)**
+* **containsMaxCount(subStr, maxCount)**
+* **containsRangeCount(subStr, minCount, maxCount)**
+* **containsOneOf(string[])**
+* **containsOneOfCount(chars, count)**
+* **containsOneOfMinCount(chars, minCount)**
+* **containsOneOfMaxCount(chars, maxCount)**
+* **containsOneOfRangeCount(chars, minCount, maxCount)**
+* **containsOneOfChars(chars)**
+* **containsOneOfCharsCount(chars, count)**
+* **containsOneOfCharsMinCount(chars, minCount)**
+* **containsOneOfCharsMaxCount(chars, maxCount)**
+* **containsOneOfCharsRangeCount(chars, minCount, maxCount)**
+* **containsOnlyOneOfChars(chars)**
+* **containSpecialChars()**
+* **match(regex)** : check if string match with a regex
+* **surroundBy(leftStr, rightStr)** : check if string is surrounded by leftStr and rightStr
+* **surroundByOneOf(string[], string[])**
+* **surroundByOneOfChars(startChars, endChars)**
+* **surroundByOneOfPairs(string[], string[])**
+* **leftOf(subStr, leftStr)** : check if the first occurrence of subStr have leftStr on his left
+* **leftOfOneOf(subStr, string[])**
+* **leftOfOneOfChars(subStr, chars)**
+* **rightOf(subStr, leftStr)** : check if the first occurrence of subStr have rightStr on his right
+* **rightOfOneOf(subStr, string[])**
+* **rightOfOneOfChars(subStr, chars)**
+* **followBy(subStr, followByStr)**
+* **followByOneOf(subStr, string[])**
+* **followByOneOfChars(subStr, chars)**
+* **oneOfFollowBy()**
+* **oneOfCharsFollowByOneOfChars()**
+* **not(validatorFunc)** : Negate the result of a validator
+* **or(validatorFuncA, validatorFuncB)**
 
 For the complete list of available validator check the `validators` folder. Names are enough friendly to understand their purposes.
 
@@ -239,19 +273,7 @@ For the complete list of available validator check the `validators` folder. Name
 ## Roadmap
 
 - [ ] Write a full documentation
-- [ ] Add common validators
-    - [ ] Web site Url Validator
-    - [ ] Url Validator
-    - [ ] Password validator
-    - [ ] Credit card validator
-    - [ ] UUID Validator
-    - [ ] IP Validator
-    - [ ] Username Validator
-    - [ ] Phone validator 
-- [ ] Add logical AND operator
-- [ ] Add logical OR operator
-- [ ] Add isPrefixedBy (+ One of, One of Chars) validators
-- [ ] ...more validators
+- [ ] add more validators
 
 See the [open issues](https://github.com/othneildrew/Best-README-Template/issues) for a full list of proposed features (and known issues).
 
