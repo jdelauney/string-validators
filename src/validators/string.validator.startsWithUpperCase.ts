@@ -3,11 +3,12 @@ import { ValidatorFunc } from '../validator';
 const create = (): ValidatorFunc => {
   return Object.freeze({
     validate: (value: string) => {
-      return !isNaN(Number(value));
+      const firstChar = value.charAt(0);
+      return firstChar >= 'A' && firstChar <= 'Z';
     },
   });
 };
 
-export const isNumeric = () => {
+export const startsWithUpperCase = () => {
   return create();
 };

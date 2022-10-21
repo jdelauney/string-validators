@@ -1,4 +1,4 @@
-import { ValidatorFunc } from '../stringValidator';
+import { ValidatorFunc } from '../validator';
 
 const create = (equalStr: string, caseSensitive = false): ValidatorFunc => {
   return Object.freeze({
